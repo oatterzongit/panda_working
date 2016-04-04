@@ -5,9 +5,28 @@ body {
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* Panda Color Pallette */
+.cc-red         { background: rgba(235, 42, 49, 1); }
+.cc-dgrey       { background: rgba(77, 76, 76, 1); }
+.cc-lgrey       { background: rgba(110, 108, 108, 1); }
+.cc-llgray      { background: rgba(247, 247, 247, 1); }
+.cc-white       { background: rgba(255, 255, 255, 1); }
+.cc-text-red    { color:      rgba(235, 42, 49, 1); }
+.cc-text-dgrey  { color:      rgba(77, 76, 76, 1); }
+.cc-text-lgrey  { color:      rgba(110, 108, 108, 1); }
+.cc-text-llgrey { color:      rgba(247, 247, 247, 1); }
+.cc-text-white  { color:      rgba(255, 255, 255, 1); }
+
 body {
-  font-size: 14px;
-  padding: 50px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-a { color: #00B7FF; }
+main {
+  flex: 1 0 auto;
+}
+
+.navcolor {
+  background: rgba(0, 0, 0, .75);
+}
