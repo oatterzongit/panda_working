@@ -1,27 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
-    <meta charset="utf-8">
     <title>Humans of Panda</title>
-  </head>
-  <body>
-    <!-- Header Template below -->
-    <header>
+    <meta charset="utf-8">
 
+    <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+
+  </head>
+
+  <body>
+
+    <header ng-controller="NavbarController as vm">
+    <!-- NAVBAR -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper grey darken-3">
+          <a ui-sref="/" class="brand-logo">HoP Logo</a>
+          <ul class="right">
+            <li><a ui-sref="login">Start</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- /NAVBAR -->
     </header>
 
-    <!-- Route UI in here -->
-    <main>
-      <h1>Humans of Panda</h1>
-      <span>Hello there, from Index.</span>
-
-
+    <main ui-view>
+      <!-- Route UI in here -->
     </main>
 
-    <!-- Footer template below -->
-    <footer>
 
+
+    <footer class="cc-lgrey">
+      <div class="container cc-lgrey">
+        <div>
+          <span class="grey-text text-lighten-4">© 2016 Panda Restaurant Group Inc. All Rights Reserved<span>
+          <a class="grey-text text-lighten-4 right" href="https://www.pandarg.com/">https://www.pandarg.com/</a>
+        </div>
+      </div>
     </footer>
-    <!-- Scripts below here -->
+
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="/js/main.js"></script> -->
+    <script src="/js/app/app.module.js"></script>
+    <script src="/js/app/config/app.routes.js"></script>
+    <script src="/js/app/controllers/navbar.controller.js"></script>
+
   </body>
 </html>
