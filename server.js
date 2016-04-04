@@ -24,7 +24,7 @@ app.locals.title = app.get('title');
 
 /*== MIDDLEWARE ==*/
 
-// Allow CORS
+// Allow CORS durring development for Postman access
 if (app.get('env') === 'development') {
   app.use(allowCors);
 }
@@ -36,11 +36,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(debugReq);
 
-// Routes to static assets. Uncomment below if you have a favicon.
+// Routes to static assets in public folder and favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Defines all of our "dynamic" routes.
+// Defines the backend route to the API router
 app.use('/api', routes);
 
 // Catches all 404 routes.
@@ -84,6 +84,14 @@ function allowCors(req, res, next) {
     res.send(200);
   } else {
     next();
+  }
+}
+
+function addFailedAuthHeader(err, req, res, next) {
+  var header = {'WWW-Authenticate': 'Bearer'};
+  if (err.status === 401) {
+    if (err.realm) header['WWW-Authenticate'] += ` realm="${err.realm}"`;
+    res.set(header);
   }
 }
 
