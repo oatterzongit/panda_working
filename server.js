@@ -4,12 +4,11 @@ var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
-var cookieParser = require('cookie-parser');
 
 // Load local libraries.
 var env      = require('./config/environment'),
     mongoose = require('./config/database'),
-    routes   = require('./config/routes');
+    routes   = require('./routes/api_routes');
 
 // Instantiate a server application.
 var app = express();
@@ -17,33 +16,32 @@ var app = express();
 // Configure the application (and set it's title!).
 app.set('title', env.TITLE);
 app.set('safe-title', env.SAFE_TITLE);
-// EJS view engine config
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // Create local variables for use thoughout the application.
 app.locals.title = app.get('title');
 
+
+
+/*== MIDDLEWARE ==*/
+
+// Allow CORS
+if (app.get('env') === 'development') {
+  app.use(allowCors);
+}
+
 // Logging layer.
 app.use(logger('dev'));
 
-// Helper layer (parses the requests, and adds further data).
+// Parser and debug
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(cookieParser('notsosecretnowareyou'));
-
-// Routing layers: favicon, static assets, dynamic routes, or 404…
-
-// Routes to static assets. Uncomment below if you have a favicon.
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Useful for debugging the state of requests.
 app.use(debugReq);
 
+// Routes to static assets. Uncomment below if you have a favicon.
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Defines all of our "dynamic" routes.
-app.use('/', routes);
+app.use('/api', routes);
 
 // Catches all 404 routes.
 app.use(function(req, res, next) {
@@ -53,14 +51,21 @@ app.use(function(req, res, next) {
 });
 
 // Error-handling layer.
+app.use(addFailedAuthHeader);
 app.use(function(err, req, res, next) {
-  // In development, the error handler will print stacktrace.
-  err = (app.get('env') === 'development') ? err : {};
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: err
-  });
+  var message = err.message,
+      status  = err.status || 500;
+
+  res.status(status);
+
+  if (app.get('env') === 'development' && status === 500) {
+    res.json({
+      message: message,
+      error: err
+    });
+  } else {
+    res.json(message);
+  }
 });
 
 function debugReq(req, res, next) {
@@ -68,6 +73,18 @@ function debugReq(req, res, next) {
   debug('query:',  req.query);
   debug('body:',   req.body);
   next();
+}
+
+function allowCors(req, res, next) {
+  res.header('Access-Controller-Allow-Origin', '*');
+  res.header('Access-Controller-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Controller-Allow-Headers', 'Content-Type,Authorization');
+
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
 }
 
 module.exports = app;
