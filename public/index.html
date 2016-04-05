@@ -4,31 +4,32 @@
     <title>Humans of Panda</title>
     <meta charset="utf-8">
 
-    <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
 
   </head>
 
   <body>
 
-    <header ng-controller="NavbarController as vm">
-    <!-- NAVBAR -->
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper grey darken-3">
-          <a ui-sref="/" class="brand-logo">HoP Logo</a>
-          <ul class="right">
-            <li><a ui-sref="login">Start</a></li>
+    <header id="topnav">
+      <div class="inner">
+        <div class=""><h2 class="logo hop-font">Humans of Panda</h2></div>
+        <nav role='navigation'>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#">Sign up</a></li>
           </ul>
-        </div>
-      </nav>
-    </div>
-    <!-- /NAVBAR -->
+        </nav>
+      </div>
     </header>
 
     <main ui-view>
@@ -49,6 +50,7 @@
     <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="/js/main.js"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
     <script src="/js/app/app.module.js"></script>
     <script src="/js/app/config/app.routes.js"></script>
     <script src="/js/app/controllers/navbar.controller.js"></script>
