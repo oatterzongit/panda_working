@@ -1,21 +1,26 @@
+/* ========================== Panda Color Pallette ========================== */
+
+.hop-red         { background: rgba(235, 42, 49, 1); }
+.hop-dgrey       { background: rgba(77, 76, 76, 1); }
+.hop-lgrey       { background: rgba(110, 108, 108, 1); }
+.hop-llgray      { background: rgba(247, 247, 247, 1); }
+.hop-white       { background: rgba(255, 255, 255, 1); }
+.hop-text-red    { color:      rgba(235, 42, 49, 1); }
+.hop-text-dgrey  { color:      rgba(77, 76, 76, 1); }
+.hop-text-lgrey  { color:      rgba(110, 108, 108, 1); }
+.hop-text-llgrey { color:      rgba(247, 247, 247, 1); }
+.hop-text-white  { color:      rgba(255, 255, 255, 1); }
+
+
+
+/* ================================= Global ================================= */
+
 *,
 html,
 body {
   box-sizing: border-box;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
-
-/* Panda Color Pallette */
-.cc-red         { background: rgba(235, 42, 49, 1); }
-.cc-dgrey       { background: rgba(77, 76, 76, 1); }
-.cc-lgrey       { background: rgba(110, 108, 108, 1); }
-.cc-llgray      { background: rgba(247, 247, 247, 1); }
-.cc-white       { background: rgba(255, 255, 255, 1); }
-.cc-text-red    { color:      rgba(235, 42, 49, 1); }
-.cc-text-dgrey  { color:      rgba(77, 76, 76, 1); }
-.cc-text-lgrey  { color:      rgba(110, 108, 108, 1); }
-.cc-text-llgrey { color:      rgba(247, 247, 247, 1); }
-.cc-text-white  { color:      rgba(255, 255, 255, 1); }
 
 body {
   display: flex;
@@ -27,6 +32,15 @@ main {
   flex: 1 0 auto;
 }
 
+.hop-font {
+  font-family: 'Pacifico', cursive;
+}
+
+
+
+
+/* ================================ Nav Bar ================================= */
+
 header {
   position: fixed;
   width: 100%;
@@ -34,48 +48,98 @@ header {
   z-index: 100;
 }
 
+.logo {
+  height: 25px;
+}
+
+.inner {
+  height: 75px;
+}
+
 nav {
   overflow: hidden;
+  height: 75px;
 }
 
 nav ul {
   float: right;
+  margin: 0;
 }
 
 nav li {
   display: inline;
   float: left;
+  font-size: 20px;
+  transition: 0.5s all;
+  cursor: pointer;
 }
 
 nav a {
   display: inline-block;
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
   text-decoration: none;
   padding: 25px;
-  transition: 0.3s all;
 }
 
-nav a:hover {
+nav li:hover {
   background: red;
 }
 
 .logo {
   float: left;
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
   font-size: 30px;
-  line-height: 50px;
+  line-height: 30px;
   transition: 0.7s all;
 }
 
-.hop-font {
-  color: #FFFFFF;
+
+/* ============================== Intro Banner ============================== */
+
+.banner-wrapper {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+
+
+.banner {
+  background-image: url(/assets/images/splash-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
+
+.banner-content-wrapper {
+  cursor: default;
+  text-align:  center;
+  line-height: 500px;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  color:       rgba(255, 255, 255, 1);
+  background:  rgba(0, 0, 0, .60);
+  opacity: 0.4;
+  transition: opacity 0.9s;
+}
+
+.banner-content-wrapper:hover {
+    opacity: 1;
+    transition: opacity 0.9s;
+}
+
+.banner-header {
+  font-size:   50px;
+  width:       500px;
+  height:      100px;
+  line-height: 100px;
   font-family: 'Pacifico', cursive;
 }
 
-.splash-bg {
-  background: url(images/bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.banner-tagline {
+  font-size:   25px;
+  width:       500px;
+  height:      50px;
+  line-height: 50px;
 }
