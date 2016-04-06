@@ -22,13 +22,14 @@
 
     <header id="topnav">
       <div class="inner">
-        <div class=""><h2 class="logo hop-font">Humans of Panda</h2></div>
+        <div class="">
+          <h2 ui-sref="home" class="logo hop-font">Humans of Panda</h2>
+        </div>
         <nav role='navigation'>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Log in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a ui-sref="home" ui-sref-active="active" class="nav">Home</a></li>
+            <li><a ui-sref="login" ui-sref-active="active" class="nav">Log in</a></li>
+            <li><a ui-sref="login" ui-sref-active="active" class="nav">Sign up</a></li>
           </ul>
         </nav>
       </div>
@@ -41,10 +42,24 @@
 
 
     <footer>
-      <div class="footer-wrapper">
-        <div class="footer-content">
+      <div class="wrapper">
+        <div class="bot-nav">
+          <ul class="links">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="http://www.pandacares.org/" target="_blank">Community</a></li>
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/legal-statement/">Legal Statement</a></li>
+          </ul>
+        </div>
+        <div class="cp-wrapper">
           <span class="copywrite">© 2016 Panda Restaurant Group Inc. All Rights Reserved<span>
-          <a class="pandarg" href="https://www.pandarg.com/">https://www.pandarg.com/</a>
+            <div>
+              <a class="pandarg" href="https://www.pandarg.com/">www.pandarg.com</a>
+            </div>
+        </div>
+        <div class="oat-logo">
+
         </div>
       </div>
     </footer>
