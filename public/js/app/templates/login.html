@@ -1,0 +1,22 @@
+<div class="main-container" layout="column">
+<md-card>
+  <img class="md-card-image" src="card-image.png" alt="image caption">
+  <md-card-content>
+    <h2>Log in</h2>
+    <form class="" ng-submit="vm.logIn();">
+      <input type="email" placeholder="Email" name="email" ng-model="vm.email" value="">
+      <input type="password" placeholder="Password" name="password" ng-model="vm.email" value="">
+    </form>
+  </md-card-content>
+  <md-card-footer>
+    <span>
+      Not a member yet? <a href="#">Join the family.</a>
+    </span>
+  </md-card-footer>
+  <div class="md-actions" layout="row" layout-align="end">
+     <md-button>Submit</md-button>
+   </div>
+</md-card>
+
+
+</div>
