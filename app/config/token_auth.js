@@ -43,7 +43,7 @@ function create(req, res, next) {
   User
     .findOne({email: req.body.email}).exec()
     .then(function(user) {
-      if (!user !! !user.verifyPasswordSync(req.body.password)) {
+      if (!user || !user.verifyPasswordSync(req.body.password)) {
         var message = 'User not found or password incorrect.';
         return res.status(403).json(message);
       }
@@ -69,7 +69,7 @@ function refresh(req, res, next) {
 
 function authenticate(req, res, next) {
   var token = findTokenInAuthHeader(req);
-  if (!token) { return next({status: 401, message 'Authenticate with Token'});
+  if (!token) return next({status: 401, message: 'Authenticate with Token'});
 
   verifyJwtAndHandleErrors(token, next, function(decoded) {
     req.decoded = decoded;
@@ -114,6 +114,6 @@ function verifyJwtAndHandleErrors(token, next, cb) {
       });
     } else {
       cb(decoded);
-    }
+    };
   });
 }
