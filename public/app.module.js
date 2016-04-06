@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app', ['ui.router', 'ngMaterial'])
+    .module('app', ['ui.router', 'ngMaterial', 'ngAnimate'])
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
         .primaryPalette('red', {

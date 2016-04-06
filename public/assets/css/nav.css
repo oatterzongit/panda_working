@@ -24,6 +24,7 @@ header {
 nav {
   overflow: hidden;
   height: 75px;
+  transition: .8s all ease;
 }
 
 nav ul {
