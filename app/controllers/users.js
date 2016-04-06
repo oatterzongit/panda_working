@@ -3,7 +3,8 @@ var User = require("../models/user");
 module.exports = {
   index:  index,
   show:   show,
-  create: create
+  create: create,
+  me:     me
 };
 
 
@@ -42,4 +43,19 @@ function create(req, res) {
     if (err) { res.send(err) }
     res.json(savedUser);
   });
+};
+
+function me(req, res, next) {
+  User
+    .findOne({email: req.decoded.email}).exec()
+    .then(function(user) {
+      res.json({
+        success: true,
+        message: 'User Data Retrieved.',
+        data:    user
+      });
+    })
+    .catch(function(err) {
+      next(err);
+    });
 };

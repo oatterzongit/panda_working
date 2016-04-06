@@ -12,7 +12,7 @@ var postsController = require('../controllers/posts');
 router.get('/users',              usersController.index);
 router.get('/users',              usersController.create);
 router.get('/users/:id',          usersController.show);
-router.get('/users/me',           usersController.show);
+router.get('/users/me',           usersController.me);
 
 // Posts Resource Paths
 router.get('/posts',              postsController.index);
