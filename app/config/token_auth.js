@@ -2,7 +2,9 @@ var jwt = require('jsonwebtoken');
 var User = require('../models/user');
 
 module.exports = {
-
+  create:       create,
+  refresh:      refresh,
+  authenticate: authenticate
 }
 
 // ========================= Token Structure (JWT) ========================= //

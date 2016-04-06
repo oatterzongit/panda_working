@@ -1,11 +1,12 @@
 var express = require('express'),
     router  = new express.Router();
 
-// Require controllers.
+// Require controllers
 var usersController = require('../controllers/users');
 var postsController = require('../controllers/posts');
 
-// Token goes here
+// Require Token Authentication
+var token           = require('../config/token_auth');
 
 
 // User Resource Paths
@@ -23,15 +24,10 @@ router.get('/posts/:id',          postsController.show);
 router.get('/posts/:id/comments', postsController.listComments);
 
 // Token Resource Paths
-// router.get('/token', tokenController.getToken);
-// router.get('/users/', tokenController.getToken);
+router.get('/token',              token.create);
+router.get('/users/me/token',     token.authenticate);
+router.get('/users/me/token',     token.refresh);
 
 
 
 module.exports = router;
-
-// need token routes
-// view, submit login
-// auth service
-// login controller (return a prom )
-//
