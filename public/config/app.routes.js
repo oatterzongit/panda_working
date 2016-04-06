@@ -11,11 +11,11 @@
       $stateProvider
         .state('home', {
           url:          '/',
-          templateUrl:  '/js/app/templates/home.html'
+          templateUrl:  '/layouts/home.html'
         })
         .state('login', {
           url:          '/login',
-          templateUrl:  '/js/app/templates/login.html',
+          templateUrl:  '/layouts/login.html',
           controller:   'NavbarController',
           controllerAs: 'vm'
         });

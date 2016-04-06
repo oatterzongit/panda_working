@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "seed": "node ./config/seeds.js"
+    "start": "node ./app/bin/www",
+    "seed": "node ./app/config/seeds.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

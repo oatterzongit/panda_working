@@ -1,0 +1,51 @@
+/* ========================== Panda Color Pallette ========================== */
+
+.hop-red         { background: rgba(235, 42, 49, 1); }
+.hop-dgrey       { background: rgba(77, 76, 76, 1); }
+.hop-lgrey       { background: rgba(110, 108, 108, 1); }
+.hop-llgray      { background: rgba(247, 247, 247, 1); }
+.hop-white       { background: rgba(255, 255, 255, 1); }
+.hop-text-red    { color:      rgba(235, 42, 49, 1); }
+.hop-text-dgrey  { color:      rgba(77, 76, 76, 1); }
+.hop-text-lgrey  { color:      rgba(110, 108, 108, 1); }
+.hop-text-llgrey { color:      rgba(247, 247, 247, 1); }
+.hop-text-white  { color:      rgba(255, 255, 255, 1); }
+
+
+
+/* ================================= Global ================================= */
+
+*,
+html,
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto Condensed', sans-serif;
+  -webkit-padding-start: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.hop-font {
+  font-family: 'Pacifico', cursive;
+}
+
+.main-container {
+  padding: 75px 10px 0 10px;
+}
+
+md-card {
+  transition: 0.3s;
+}
+
+md-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.3s;
+}

@@ -1,0 +1,56 @@
+/* ============================== Home Banner ============================== */
+
+.banner-wrapper {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+
+.banner {
+  background-image: url(/assets/images/splash-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  border-bottom: 10px red solid;
+}
+
+.banner-content-wrapper {
+  cursor: default;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  color:       rgba(255, 255, 255, 1);
+  background:  rgba(0, 0, 0, .50);
+  opacity: 0.4;
+  transition: opacity 0.9s;
+  display: table;
+}
+
+.banner-content {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.banner-content-wrapper:hover {
+    opacity: 1;
+    transition: opacity 0.9s;
+}
+
+.banner-header {
+  font-size:   50px;
+}
+
+.banner-tagline {
+  font-size:   25px;
+  display: block;
+}
+
+/* =========================== Home Content =========================== */
+
+div .about-content {
+  padding: 10px;
+  text-align: center;
+  background: rgba(0, 0, 0, 1);
+  color: white;
+}

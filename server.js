@@ -6,9 +6,9 @@ var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
 
 // Load local libraries.
-var env      = require('./config/environment'),
-    mongoose = require('./config/database'),
-    routes   = require('./routes/api_routes');
+var env      = require('./app/config/environment'),
+    mongoose = require('./app/config/database'),
+    routes   = require('./app/routes/api_routes');
 
 // Instantiate a server application.
 var app = express();
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(debugReq);
 
 // Routes to static assets in public folder and favicon
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/assets/images', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Defines the backend route to the API router

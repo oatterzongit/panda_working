@@ -10,5 +10,6 @@ var usersController = require('../controllers/users');
 // User Resource Paths
 router.get('/users',     usersController.index);
 router.get('/users/:id', usersController.show);
+router.get('/users/',    usersController.create);
 
 module.exports = router;
