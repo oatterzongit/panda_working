@@ -16,7 +16,7 @@
         .state('login', {
           url:          '/login',
           templateUrl:  '/layouts/login.html',
-          controller:   'NavbarController',
+          controller:   'LoginController',
           controllerAs: 'vm'
         });
 
