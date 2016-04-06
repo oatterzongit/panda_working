@@ -9,11 +9,18 @@
 
     function appRoutes($urlRouterProvider, $stateProvider) {
       $stateProvider
-        .state('intro', {
-          url: '/',
-          templateUrl: '/js/app/templates/intro.html'
+        .state('home', {
+          url:          '/',
+          templateUrl:  '/js/app/templates/home.html'
+        })
+        .state('login', {
+          url:          '/login',
+          templateUrl:  '/js/app/templates/login.html',
+          controller:   'NavbarController',
+          controllerAs: 'vm'
         });
 
         $urlRouterProvider.otherwise('/');
+
     }
 })();
