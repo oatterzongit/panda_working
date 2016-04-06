@@ -1,13 +1,26 @@
 var mongoose = require('mongoose'),
     debug    = require('debug')('app:models');
 
-var postSchema = new mongoose.Schema({
-  author:         { type: String,  required: true },
-  body:           { type: String,  required: true },
-  display_name:   { type: String,  required: true, unique: true },
-  location:       { type: String,  required: true },
-  createdAt:      { type: Date,    default:  Date.now },
+var commentSchema = new mongoose.Schema({
+  author:            {
+                       type: mongoose.Schema.Types.ObjectId,
+                       ref:  "User"
+                     },
+  body:              { type: String,   required: true                  },
+  createdAt:         { type: Date,     default:  Date.now              }
 });
+
+var postSchema = new mongoose.Schema({
+  author:            {
+                      type: mongoose.Schema.Types.ObjectId,
+                      ref:  "User"
+                     },
+  comments:          [commentSchema],
+  body:              { type: String,   required: true                  },
+  current_location:  { type: String,   required: true                  },
+  createdAt:         { type: Date,     default:  Date.now              }
+});
+
 
 postSchema.plugin(require('mongoose-bcrypt'));
 
@@ -18,6 +31,6 @@ postSchema.options.toJSON = {
   }
 };
 
-var User = mongoose.model('Post', postSchema);
+var Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;
