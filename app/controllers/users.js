@@ -30,19 +30,35 @@ function show(req, res, next){
   });
 };
 
-function create(req, res) {
-  var user = new User();
 
-  user.first_name   = req.body.first_name;
-  user.last_name    = req.body.last_name;
-  user.display_name = req.body.display_name;
-  user.email        = req.body.email;
-  user.location     = req.body.location;
-
-  user.save(function(err, savedUser) {
-    if (err) { res.send(err) }
-    res.json(savedUser);
-  });
+function create(req, res, next) {
+  if (!req.body.password) {
+    return res.status(422).send('Missing Required Fields.');
+  }
+  User
+    .create(req.body)
+    .then(function(user) {
+      res.json({
+        success: true,
+        message: 'Success: User Created.',
+        data:    {
+          id:           user._id,
+          display_name: user.display_name,
+          email:        user.email,
+          first_name:   user.first_name,
+          last_name:    user.last_name,
+          location:     user.location,
+          admin:        user.admin
+        }
+      });
+    }).catch(function(err) {
+      if (err.message.match(/E1100/)) {
+        err.status = 409;
+      } else {
+        err.status = 422;
+      }
+      next(err);
+    });
 };
 
 function me(req, res, next) {
