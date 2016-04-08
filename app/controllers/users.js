@@ -32,7 +32,7 @@ function show(req, res, next){
 
 
 function create(req, res, next) {
-  if (!req.body.password) {
+  if (!req.body.password || !req.body.email) {
     return res.status(422).send('Missing Required Fields.');
   }
   User
@@ -41,14 +41,9 @@ function create(req, res, next) {
       res.json({
         success: true,
         message: 'Success: User Created.',
-        data:    {
+        data: {
           id:           user._id,
-          display_name: user.display_name,
-          email:        user.email,
-          first_name:   user.first_name,
-          last_name:    user.last_name,
-          location:     user.location,
-          admin:        user.admin
+          email:        user.email
         }
       });
     }).catch(function(err) {

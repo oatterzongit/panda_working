@@ -9,14 +9,14 @@
 
     function appRoutes($urlRouterProvider, $stateProvider) {
       $stateProvider
-        .state('home', {
+        .state('welcome', {
           url:          '/',
-          templateUrl:  '/layouts/home.html'
+          templateUrl:  '/layouts/welcome.html'
         })
-        .state('login', {
-          url:          '/login',
-          templateUrl:  '/layouts/login.html',
-          controller:   'LoginController',
+        .state('home', {
+          url:          '/home',
+          templateUrl:  '/layouts/home.html',
+          controller:   'HomeController',
           controllerAs: 'vm'
         });
 

@@ -49,3 +49,36 @@ md-card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: 0.3s;
 }
+
+button {
+  background: #ffffff;
+  -webkit-border-radius: 9;
+  -moz-border-radius: 9;
+  border-radius: 0px;
+  color: #a6a6a6;
+  padding: 0 35px;
+  margin: 5px;
+  text-decoration: none;
+  border: 1px solid #a6a6a6;
+}
+
+button:hover {
+  background: #a6a6a6;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+input {
+  margin: 5px;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #a6a6a6;
+  border-left: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

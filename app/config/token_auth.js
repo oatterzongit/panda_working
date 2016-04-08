@@ -12,16 +12,12 @@ module.exports = {
 function extractPayload(user, options) {
   return {
     _id:              user._id,
-    display_name:     user.display_name,
     email:            user.email,
-    first_name:       user.first_name,
-    last_name:        user.last_name,
-    location:         user.location,
     user:             [
       'public_api',
       'user'
     ],
-    _v:               user.__v
+    __v:               user.__v
   };
 }
 
@@ -31,12 +27,7 @@ const jwtOptions = {
 };
 
 function create(req, res, next) {
-  if (!req.body.email
-       || !req.body.password
-       || !req.body.display_name
-       || !req.body.first_name
-       || !req.body.last_name
-       || !req.body.location ) {
+  if (!req.body.email || !req.body.password ) {
     var message = 'Missing required fields. Check your form.';
     return res.status(422).json(message);
   }

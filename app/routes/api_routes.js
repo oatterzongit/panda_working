@@ -5,28 +5,27 @@ var express = require('express'),
 var usersController = require('../controllers/users');
 var postsController = require('../controllers/posts');
 
-// Require Token Authentication
-var token           = require('../config/token_auth');
 
+// Require Token Authentication
+var token = require('../config/token_auth');
 
 // User Resource Paths
 router.get('/users',              usersController.index);
-router.get('/users',              usersController.create);
+router.post('/users',             usersController.create);
 router.get('/users/:id',          usersController.show);
-router.get('/users/me',           usersController.me);
+router.get('/users/me',           token.authenticate, usersController.me);
+
+router.post('/token',             token.create);
+router.post('/users/me/token',    token.authenticate, token.refresh);
 
 // Posts Resource Paths
-router.get('/posts',              postsController.index);
-router.get('/posts',              postsController.create);
-router.get('/posts/:id',          postsController.show);
+router.get('/posts',              token.authenticate, postsController.index);
+router.post('/posts',             token.authenticate, postsController.create);
+router.get('/posts/:id',          token.authenticate, postsController.show);
 
 // Comments Resource Paths
-router.get('/posts/:id/comments', postsController.listComments);
+router.get('/posts/:id/comments', token.authenticate, postsController.listComments);
 
-// Token Resource Paths
-router.get('/token',              token.create);
-router.get('/users/me/token',     token.authenticate);
-router.get('/users/me/token',     token.refresh);
 
 
 

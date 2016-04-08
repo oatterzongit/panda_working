@@ -11,7 +11,10 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/animation.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/nav.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/welcome.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+
+    <script src="/assets/vendor/jwt-decode.2.0.1.js"></script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
@@ -21,23 +24,56 @@
 
   </head>
 
-  <body>
+  <body ng-controller="AuthController as vm">
 
 
     <header id="topnav">
       <div class="inner">
         <div class="">
-          <h2 ui-sref="home" class="logo hop-font">Humans of Panda</h2>
+          <h2 ui-sref="welcome" class="logo hop-font">Humans of Panda</h2>
         </div>
         <nav role='navigation'>
           <ul>
+            <!-- <li><a ui-sref="welcome" ui-sref-active="active" class="nav">Welcome</a></li> -->
             <li><a ui-sref="home" ui-sref-active="active" class="nav">Home</a></li>
-            <li><a ui-sref="login" ui-sref-active="active" class="nav">Log in</a></li>
-            <li><a ui-sref="login" ui-sref-active="active" class="nav">Sign up</a></li>
+            <li><a id="login-modal-btn" ui-sref-active="active" class="nav" ng-hide="vm.authService.isLoggedIn();">Log in</a></li>
+            <li><a ng-click="vm.userLogOut();" ng-show="vm.authService.isLoggedIn();" ui-sref-active="active" class="nav">Log out</a></li>
+            <li><a id="signup-modal-btn" ui-sref-active="active" class="nav" ng-hide="vm.authService.isLoggedIn();">Sign up</a></li>
           </ul>
         </nav>
       </div>
     </header>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+      <div id="modal-content" class="modal-content">
+        <h1 class="hop-font">Log in</h1>
+        <form ng-submit="vm.submitLogIn();">
+          <input type="email" placeholder="Email" ng-model="vm.logIn.email" value="">
+          <input type="password" placeholder="Password" ng-model="vm.logIn.password" value="">
+          <button class="submit btn" id="login-submit">Submit</button>
+        </form>
+        <button class="close btn" id="login-close">Cancel</button>
+
+      </div>
+    </div>
+    <!-- Login Modal -->
+
+    <!-- SignUp Modal -->
+    <div id="signup-modal" class="modal">
+      <div id="modal-content" class="signup-modal-content">
+        <h1 class="hop-font">Be a Part of the Family.</h1>
+        <form ng-submit="vm.submitSignUp();">
+          <input type="email" placeholder="Email" ng-model="vm.signUp.email" value="">
+          <input type="password" placeholder="Password" ng-model="vm.signUp.password" value="">
+          <input type="password" placeholder="Confirm Password" ng-model="vm.signUp.passwordConfirmation" value="">
+          <button class="submit" id="signup-submit">Submit</button>
+        </form>
+        <button class="close" id="signup-close">Cancel</button>
+
+      </div>
+    </div>
+    <!-- SignUp Modal -->
 
     <main ui-view>
       <!-- Route UI in here -->
@@ -68,13 +104,19 @@
       </div>
     </footer>
 
+    <!-- Library scripts -->
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+    <!-- Angular Scripts -->
     <script src="app.module.js"></script>
     <script src="/config/app.routes.js"></script>
     <script src="/services/token.service.js"></script>
     <script src="/services/auth.service.js"></script>
-    <script src="/controllers/navbar.controller.js"></script>
-    <script src="/controllers/login.controller.js"></script>
+    <script src="/controllers/auth.controller.js"></script>
+    <script src="/controllers/home.controller.js"></script>
+
+    <!-- Misc Scripts -->
+    <script src="/controllers/animations.js"></script>
 
   </body>
 </html>

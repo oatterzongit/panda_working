@@ -24,7 +24,7 @@
       function tokenInterceptor(tokenService, $state) {
         return {
           request: function(config) {
-            var token = tokenService.retrieve();
+            var token = tokenService.get();
             if (token) {
               config.headers['Authorization'] = `Bearer ${token}`;
             }

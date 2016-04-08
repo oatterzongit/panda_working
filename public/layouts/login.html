@@ -1,22 +1,37 @@
-<div class="main-container" layout="column">
-<md-card>
-  <img class="md-card-image" src="card-image.png" alt="image caption">
-  <md-card-content>
-    <h2>Log in</h2>
-    <form class="" ng-submit="vm.logIn();">
-      <input type="email" placeholder="Email" name="email" ng-model="vm.email" value="">
-      <input type="password" placeholder="Password" name="password" ng-model="vm.email" value="">
-    </form>
-  </md-card-content>
-  <md-card-footer>
-    <span>
-      Not a member yet? <a href="#">Join the family.</a>
-    </span>
-  </md-card-footer>
-  <div class="md-actions" layout="row" layout-align="end">
-     <md-button>Submit</md-button>
-   </div>
-</md-card>
+<div class="banner-wrapper">
+  <div class="banner">
+    <div class="banner-content-wrapper">
+      <div class="banner-content">
+        <span class="banner-header hop-font">
+          Be a part of the family.
+        </span>
+        <span class="banner-tagline">
+          <form class="signup-form" ng-submit="vm.submitSignUp();">
+            <div>
+              <input type="display_name" placeholder="Display Name" ng-model="vm.signUp.display_name">
+            </div>
+            <div class="">
+              <input type="email" placeholder="Email" ng-model="vm.signUp.email">
+            </div>
+            <div class="">
+              <input type="password" placeholder="Password" ng-model="vm.signUp.password">
+            </div>
+            <div>
+              <input type="password" placeholder="Confirm Password" ng-model="vm.signUp.passwordConfirmation">
+            </div>
+            <md-button type="submit">Submit</md-button>
+          </form>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<div class="about-wrapper">
+  <div class="about-content">
+    <h1>Connect.</h1>
+    <h1>Mingle.</h1>
+    <h1>Share.</h1>
+    <h1>This is Panda Family.</h1>
+  </div>
 </div>
