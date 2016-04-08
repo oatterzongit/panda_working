@@ -16,7 +16,7 @@
         .state('home', {
           url:          '/home',
           templateUrl:  '/layouts/home.html',
-          controller:   'HomeController',
+          controller:   'postController',
           controllerAs: 'vm'
         });
 

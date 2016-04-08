@@ -82,3 +82,36 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.textbox {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  display:block;/*reset from inline*/
+  width:100%;
+  margin:0;/*remove defaults*/
+  padding:4px;
+  border:1px solid #333;
+  overflow-y:auto;/*resets IE*/
+  overflow-x:hidden;/*resets IE*/
+}
+
+.posts {
+  background: #ffd9d9;
+}
+
+.new-post {
+  background: #fffbd9;
+}
+
+.user-info {
+  background: #d9ffff;
+}

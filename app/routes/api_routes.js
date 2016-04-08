@@ -19,9 +19,9 @@ router.post('/token',             token.create);
 router.post('/users/me/token',    token.authenticate, token.refresh);
 
 // Posts Resource Paths
-router.get('/posts',              token.authenticate, postsController.index);
+router.get('/posts',              postsController.index);
 router.post('/posts',             token.authenticate, postsController.create);
-router.get('/posts/:id',          token.authenticate, postsController.show);
+router.get('/posts/:id',          postsController.show);
 
 // Comments Resource Paths
 router.get('/posts/:id/comments', token.authenticate, postsController.listComments);
